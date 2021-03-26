@@ -1,7 +1,7 @@
 {
   "name": "jquery.tagcloud",
   "title": "jQuery Tag Cloud",
-  "description": "jQuery based tag cloud, showing bigger tags in the center",
+  "description": "jQuery plugin for tag cloud, showing bigger tags in the center",
   "keywords": [
     "jquery-plugin",
     "tag-cloud",
