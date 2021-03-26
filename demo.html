@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Demo of jQuery Tag Cloud</title>
+	<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
+	<script src="jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        console.log('ready');
+        let options = {
+            container: {
+                width: 650,
+                //fontFamily: '"Times New Roman", Times, serif',
+                backgroundColor: '#fafaf8'
+            },
+            tag: {
+                color: 'gray',
+                backgroundColor: '#ffffdd',
+                maxFontSize: 45,    // max font size in pixels
+                minFontSize: 8,     // min font size in pixels
+                startBackgroundColor: '#ffd',
+                endBackgroundColor: 'rgb(200,0,0)',
+            },
+            data: [
+                { tag: 'HTML',          link: '#', weight: 60 },
+                { tag: 'HTML5',         link: '#', weight: 90 },
+                { tag: 'CSS',           link: '#', weight: 65 },
+                { tag: 'CSS3',          link: '#', weight: 35 },
+                { tag: 'JavaScript',    link: '#', weight: 85 },
+                { tag: 'jQuery',        link: '#', weight: 100 },
+                { tag: 'React.js',      link: '#', weight: 78 },
+                { tag: 'Angular',       link: '#', weight: 62 },
+                { tag: 'Express',       link: '#', weight: 82 },
+                { tag: 'Sharepoint',    link: '#', weight: 10 },
+                { tag: 'ASP.NET',       link: '#', weight: 15 },
+                { tag: 'Vue.js',        link: '#', weight: 43 },
+                { tag: 'Spring',        link: '#', weight: 36 },
+                { tag: 'Django',        link: '#', weight: 32 },
+                { tag: 'Flask',         link: '#', weight: 18 },
+                { tag: 'Ruby onRails',  link: '#', weight: 14 },
+                { tag: 'MongoDB',       link: '#', weight: 95 },
+                { tag: 'Elasticsearch', link: '#', weight: 40 },
+                { tag: 'MySql',         link: '#', weight: 58 },
+                { tag: 'PostgreSQL',    link: '#', weight: 50 },
+                { tag: 'Microsoft SQL Server', link: '#', weight: 48 },
+                { tag: 'SQLite',        link: '#', weight: 45 },
+                { tag: 'Redis',         link: '#', weight: 41 },
+                { tag: 'Oracle 9i',     link: '#', weight: 39 },
+                { tag: 'Node.js',       link: '#', weight: 70 },
+                { tag: '.NET',          link: '#', weight: 38 },
+                { tag: 'WCF',           link: '#', weight: 16 },
+                { tag: 'TensorFlow',    link: '#', weight: 24 },
+                { tag: 'Ansible',       link: '#', weight: 16 },
+                { tag: 'Flutter',       link: '#', weight: 15 },
+                { tag: 'TypeScript',    link: '#', weight: 37 },
+                { tag: 'Java',          link: '#', weight: 42 },
+                { tag: 'Python',        link: '#', weight: 58 },
+                { tag: 'C',             link: '#', weight: 28 },
+                { tag: 'C++',           link: '#', weight: 36 },
+                { tag: 'C#',            link: '#', weight: 25 },
+                { tag: 'Go',            link: '#', weight: 18 },
+                { tag: 'PHP',           link: '#', weight: 12 },
+                { tag: 'VBA',           link: '#', weight: 10 }
+            ]
+        }
+        $('#demoCloud1').tagCloud(options);
+        $('#demoCloud2').tagCloud();
+    });
+    </script>
+    <link rel="stylesheet" href="jquery.tagcloud.css" />
+    <style type="text/css">
+    body {
+        padding: 3px 10px;
+  		background-color: #ffffff;
+        font-family: "helvetica"; 
+  		color: #000000;
+        width: 800px;
+    }
+    h1 { font-size: 2em; color: #000000; margin: 3px 0 10px 0; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
+	</style>
+</head>
+<body>
+    <div id="container">
+        <h1>Demo of jQuery Tag Cloud</h1>
+        <div id="demoCloud1"></div>
+        <hr />
+        <ul id="demoCloud2">
+            <li data-weight="60"><a href="#">HTML</a></li>
+            <li><a data-weight="20" href="#">HTML5</a></li>
+            <li data-weight="65">CSS</li>
+            <li data-weight="35"><a href="#">CSS3</a></li>
+            <li data-weight="85"><a href="#">JavaScript</a></li>
+            <li data-weight="100"><a href="#">jQuery</a></li>
+            <li data-weight="78"><a href="#">React.js</a></li>
+            <li data-weight="62"><a href="#">Angular</a></li>
+            <li data-weight="82"><a href="#">Express</a></li>
+            <li data-weight="10"><a href="#">Sharepoint</a></li>
+            <li data-weight="15"><a href="#">ASP.NET</a></li>
+            <li data-weight="43"><a href="#">Vue.js</a></li>
+            <li data-weight="36"><a href="#">Spring</a></li>
+            <li data-weight="32"><a href="#">Django</a></li>
+            <li data-weight="18"><a href="#">Flask</a></li>
+        </ul>
+    </div>
+</body>
+</html>
