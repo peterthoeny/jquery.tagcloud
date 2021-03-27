@@ -19,7 +19,7 @@
     }
 
     function entityEncode(val) {
-        val = val
+        val = val.toString()
         .replace(/&/g, '&amp;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;')
