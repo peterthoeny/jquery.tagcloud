@@ -7,10 +7,15 @@
 	<script src="jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-        console.log('ready');
+        $('#demoCloud1').tagCloud({
+            tag: {
+                color: '#444444',
+                backgroundColor: '#f8f8cc'
+            }
+        });
         let options = {
             container: {
-                width: 650,
+                width: 630,
                 //fontFamily: '"Times New Roman", Times, serif',
                 backgroundColor: '#fafaf8'
             },
@@ -60,13 +65,7 @@
                 { tag: 'VBA',           link: '#', weight: 10 }
             ]
         }
-        $('#demoCloud1').tagCloud(options);
-        $('#demoCloud2').tagCloud({
-            tag: {
-                color: '#444444',
-                backgroundColor: '#f8f8cc'
-            }
-        });
+        $('#demoCloud2').tagCloud(options);
     });
     </script>
     <link rel="stylesheet" href="jquery.tagcloud.css" />
@@ -76,38 +75,121 @@
   		background-color: #ffffff;
         font-family: "helvetica"; 
   		color: #000000;
-        width: 800px;
     }
     h1 { font-size: 2em; color: #000000; margin: 3px 0 10px 0; }
     h2 { font-size: 1.2em; color: #000000; margin: 3px 0 10px 0; }
     hr { border: 0; border-bottom: 1px solid #aaa; }
+    textarea {
+        color: white;
+        background-color: #333;
+    }
 	</style>
 </head>
 <body>
     <div id="container">
-        <h1>Demo of jQuery Tag Cloud <a href="https://github.com/peterthoeny/jquery.tagcloud">jquery.tagcloud</a></h1>
+        <h1>Demo of jQuery Tag Cloud <tt>jquery.tagcloud</tt></h1>
         <hr />
-        <h2>Example 1 using <tt>div</tt> HTML tag, and options to define tag cloud</h2>
-        <div id="demoCloud1"></div>
+        <h2>Example 1: Use <tt>li</tt> HTML tags to define the tag cloud, and options for custom colors</h2>
+        <table><tr><th>
+            Tag Cloud
+        </th><th>
+            HTML
+        </th><th>
+            JavaScript
+        </th></tr>
+        <tr><td style="vertical-align: top;">
+            <ul id="demoCloud1">
+                <li data-weight="60"><a href="#">HTML</a></li>
+                <li><a data-weight="20" href="#">HTML5</a></li>
+                <li data-weight="65">CSS</li>
+                <li data-weight="35"><a href="#">CSS3</a></li>
+                <li data-weight="85"><a href="#">JavaScript</a></li>
+                <li data-weight="100"><a href="#">jQuery</a></li>
+                <li data-weight="78"><a href="#">React.js</a></li>
+                <li data-weight="62"><a href="#">Angular</a></li>
+                <li data-weight="82"><a href="#">Express</a></li>
+                <li data-weight="10"><a href="#">Sharepoint</a></li>
+                <li data-weight="15"><a href="#">ASP.NET</a></li>
+                <li data-weight="43"><a href="#">Vue.js</a></li>
+                <li data-weight="36"><a href="#">Spring</a></li>
+                <li data-weight="32"><a href="#">Django</a></li>
+                <li data-weight="18"><a href="#">Flask</a></li>
+            </ul>
+        </td><td style="vertical-align: top;">
+            <textarea style="width: 33em; height: 16.4em;" readonly="readonly">
+&lt;ul id="demoCloud1">
+  &lt;li data-weight="60">&lt;a href="#">HTML&lt;/a>&lt;/li>
+  &lt;li data-weight="20>&lt;a" href="#">HTML5&lt;/a>&lt;/li>
+  &lt;li data-weight="65">CSS&lt;/li> &lt;!-- no link -->
+  &lt;li data-weight="35">&lt;a href="#">CSS3&lt;/a>&lt;/li>
+  &lt;li data-weight="85">&lt;a href="#">JavaScript&lt;/a>&lt;/li>
+  &lt;li data-weight="100">&lt;a href="#">jQuery&lt;/a>&lt;/li>
+  &lt;li data-weight="78">&lt;a href="#">React.js&lt;/a>&lt;/li>
+  &lt;li data-weight="62">&lt;a href="#">Angular&lt;/a>&lt;/li>
+  &lt;li data-weight="82">&lt;a href="#">Express&lt;/a>&lt;/li>
+  &lt;li data-weight="10">&lt;a href="#">Sharepoint&lt;/a>&lt;/li>
+  &lt;li data-weight="15">&lt;a href="#">ASP.NET&lt;/a>&lt;/li>
+  &lt;!-- etc... -->
+&lt;/ul></textarea>
+        </td><td style="vertical-align: top;">
+            <textarea style="width: 23em; height: 16.4em;" readonly="readonly">
+$(document).ready(function() {
+  $('#demoCloud1').tagCloud({
+    tag: {
+      color: '#444444',
+      backgroundColor: '#f8f8cc'
+    }
+  });
+});</textarea>
+        </td></tr></table>
         <hr />
-        <h2>Example 2 using <tt>li</tt> HTML tags to define tag cloud, and options for custom colors</h2>
-        <ul id="demoCloud2">
-            <li data-weight="60"><a href="#">HTML</a></li>
-            <li><a data-weight="20" href="#">HTML5</a></li>
-            <li data-weight="65">CSS</li>
-            <li data-weight="35"><a href="#">CSS3</a></li>
-            <li data-weight="85"><a href="#">JavaScript</a></li>
-            <li data-weight="100"><a href="#">jQuery</a></li>
-            <li data-weight="78"><a href="#">React.js</a></li>
-            <li data-weight="62"><a href="#">Angular</a></li>
-            <li data-weight="82"><a href="#">Express</a></li>
-            <li data-weight="10"><a href="#">Sharepoint</a></li>
-            <li data-weight="15"><a href="#">ASP.NET</a></li>
-            <li data-weight="43"><a href="#">Vue.js</a></li>
-            <li data-weight="36"><a href="#">Spring</a></li>
-            <li data-weight="32"><a href="#">Django</a></li>
-            <li data-weight="18"><a href="#">Flask</a></li>
-        </ul>
+        <h2>Example 2: Use an empty <tt>div</tt> HTML tag, and options to define the tag cloud</h2>
+        <table><tr><th>
+            Tag Cloud
+        </th><th>
+            HTML
+        </th><th>
+            JavaScript
+        </th></tr>
+        <tr><td style="vertical-align: top;">
+            <div id="demoCloud2"></div>
+        </td><td style="vertical-align: top;">
+            <textarea style="width: 13em; height: 29em;" readonly="readonly">
+&lt;div id="demoCloud2">
+&lt;/div></textarea>
+        </td><td style="vertical-align: top;">
+            <textarea style="width: 34em; height: 29em;" readonly="readonly">
+$(document).ready(function() {
+  let options = {
+    container: {
+      width: 630,
+      backgroundColor: '#fafaf8',
+      //fontFamily: '"Times New Roman", Times, serif',
+    },
+    tag: {
+      maxFontSize: 45, // max font size in pixels
+      minFontSize: 8,  // min font size in pixels
+    },
+    data: [
+      { tag: 'HTML',          link: '#', weight: 60 },
+      { tag: 'HTML5',         link: '#', weight: 90,
+        tooltip: 'Sample "tooltip" message' },
+      { tag: 'CSS',           link: '#', weight: 65 },
+      { tag: 'CSS3',          link: '#', weight: 35 },
+      { tag: 'JavaScript',    link: '#', weight: 85 },
+      { tag: 'jQuery',        link: '#', weight: 100 },
+      // etc...
+    ]
+  }
+  $('#demoCloud2').tagCloud(options);
+});</textarea>
+        </td></tr></table>
+        <hr />
+        <p>Repository: <a href="https://github.com/peterthoeny/jquery.tagcloud" target="_blank">
+        https://github.com/peterthoeny/jquery.tagcloud</a></p>
+        <p>Author: <a href="https://github.com/peterthoeny" target="_blank">
+        https://github.com/peterthoeny</a></p>
+        <hr />
     </div>
 </body>
 </html>
