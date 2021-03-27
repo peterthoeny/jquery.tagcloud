@@ -50,14 +50,14 @@
                 debugLog(weight +', '+href+', '+tag+', '+$(elem).html());
                 if(options.data[idx]) {
                     if(weight != undefined) {
-                        options.data[idx].weight = weight;
+                        options.data[idx].weight = Number(weight);
                     }
                     if(href) {
                         options.data[idx].link = href;
                     }
                     options.data[idx].tag = tag;
                 } else {
-                    options.data.push({ tag: tag, link: href, weight: weight })
+                    options.data.push({ tag: tag, link: href, weight: Number(weight) })
                 }
             });
             self.hide();
@@ -73,10 +73,11 @@
         });
         self.addClass('jqTcContainer').css(css);
         let containerWidth = options.container.width;
-        let minWeight = 100000000;
-        let maxWeight = -100000000;
+        let minWeight = 1000000000000;
+        let maxWeight = -1000000000000;
         let minFontSize = options.tag.minFontSize || $.fn.tagCloud.defaults.tag.minFontSize;
         let maxFontSize = options.tag.maxFontSize || $.fn.tagCloud.defaults.tag.maxFontSize;
+        debugLog('minFontSize: '+minFontSize+', maxFontSize: '+maxFontSize);
         options.data.forEach(function(item) {
             if(item.weight < minWeight) {
                 minWeight = item.weight;
