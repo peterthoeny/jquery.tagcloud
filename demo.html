@@ -15,16 +15,12 @@
                 backgroundColor: '#fafaf8'
             },
             tag: {
-                color: 'gray',
-                backgroundColor: '#ffffdd',
                 maxFontSize: 45,    // max font size in pixels
                 minFontSize: 8,     // min font size in pixels
-                startBackgroundColor: '#ffd',
-                endBackgroundColor: 'rgb(200,0,0)',
             },
             data: [
                 { tag: 'HTML',          link: '#', weight: 60 },
-                { tag: 'HTML5',         link: '#', weight: 90 },
+                { tag: 'HTML5',         link: '#', weight: 90, tooltip: 'Sample "tooltip" message' },
                 { tag: 'CSS',           link: '#', weight: 65 },
                 { tag: 'CSS3',          link: '#', weight: 35 },
                 { tag: 'JavaScript',    link: '#', weight: 85 },
@@ -65,7 +61,12 @@
             ]
         }
         $('#demoCloud1').tagCloud(options);
-        $('#demoCloud2').tagCloud();
+        $('#demoCloud2').tagCloud({
+            tag: {
+                color: '#555',
+                backgroundColor: '#ffffdd'
+            }
+        });
     });
     </script>
     <link rel="stylesheet" href="jquery.tagcloud.css" />
@@ -78,14 +79,17 @@
         width: 800px;
     }
     h1 { font-size: 2em; color: #000000; margin: 3px 0 10px 0; }
+    h2 { font-size: 1.2em; color: #000000; margin: 3px 0 10px 0; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 	</style>
 </head>
 <body>
     <div id="container">
         <h1>Demo of jQuery Tag Cloud</h1>
+        <h2>Example 1 using <tt>div</tt> HTML tag, and options to define tag cloud</h2>
         <div id="demoCloud1"></div>
         <hr />
+        <h2>Example 2 using <tt>li</tt> HTML tags to define tag cloud, and options for custom colors</h2>
         <ul id="demoCloud2">
             <li data-weight="60"><a href="#">HTML</a></li>
             <li><a data-weight="20" href="#">HTML5</a></li>

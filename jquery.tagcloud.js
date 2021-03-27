@@ -2,6 +2,7 @@
  * jQuery plugin for tag cloud, showing bigger tags in the center
  * @version    2021.03.26
  * @repository https://github.com/peterthoeny/jquery.tagcloud
+ * @author     Peter Thoeny, https://twiki.org/ & https://github.com/peterthoeny
  * @copyright  2021 Peter Thoeny, https://github.com/peterthoeny
  * @license    Apache License 2.0, http://www.apache.org/licenses/
  */
@@ -15,6 +16,16 @@
         if(debug) {
            console.log('- tagCloud: ' + msg);
         }
+    }
+
+    function entityEncode(val) {
+        val = val
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+        return val;
     }
 
     $.fn.tagCloud = function(options) {
@@ -64,8 +75,8 @@
         let containerWidth = options.container.width;
         let minWeight = 100000000;
         let maxWeight = -100000000;
-        let minFontSize = options.tag.minFontSize;
-        let maxFontSize = options.tag.maxFontSize;
+        let minFontSize = options.tag.minFontSize || $.fn.tagCloud.defaults.tag.minFontSize;
+        let maxFontSize = options.tag.maxFontSize || $.fn.tagCloud.defaults.tag.maxFontSize;
         options.data.forEach(function(item) {
             if(item.weight < minWeight) {
                 minWeight = item.weight;
@@ -85,10 +96,16 @@
                 return 1;
             }
             return 0;
-        }).map(function(item) {
+        }).map(function(item, idx) {
+            let html = item.link ? '<a href="' + item.link + '" target="_blank">' + item.tag + '</a>' : item.tag;
+            let attrs = [ 'class="jqTcTag"' ];
             let size = parseInt((a * item.weight + b) * 10, 10) / 10;
-            let html = item.link ? '<a href="" target="_blank">' + item.tag + '</a>' : item.tag;
-            html = '<span class="jqTcTag" style="font-size: ' + size + 'px">' + html + '</span>';
+            let bgColor = item.bgColor || $.fn.tagCloud.defaults.backgroundColors[idx] || '';
+            attrs.push('style="font-size: ' + size + 'px; background-color: ' + bgColor + ';"');
+            if(item.tooltip) {
+                attrs.push('title="' + entityEncode(item.tooltip) + '"');
+            }
+            html = '<span ' + attrs.join(' ') + '>' + html + '</span>';
             self.html(html); // set temporarily to get width and height
             let tagElem = self.find('span');
             item.width = tagElem.outerWidth();
@@ -138,7 +155,13 @@
             rows.unshift(rowHtml);
         }
         let html = '<table class="jqTcTable">' + rows.join('') + '</table>';
-        self.html(html).find('.jqTcTag').css(options.tag);
+        let tagStyle = {};
+        Object.keys(options.tag).forEach(key => {
+            if(!/^(minFontSize|maxFontSize)$/.test(key)) {
+                tagStyle[key] = options.tag[key];
+            }
+        });
+        self.html(html).find('.jqTcTag').css(tagStyle);
     };
 
     $.fn.tagCloud.defaults = {
@@ -153,7 +176,17 @@
         tag: {
             minFontSize: 10,    // min font size in pixels
             maxFontSize: 40,    // max font size in pixels
-        }
+        },
+        backgroundColors: [
+            '#db843d', '#92a8cd', '#a47d7c', '#058dc7', '#50b432', '#ed561b', '#24cbe5', '#64e572',
+            '#ff9655', '#d6cb54', '#6af9c4', '#b5ca92', '#2f7ed8', '#0d233a', '#8bbc21', '#910000',
+            '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#db843d', '#92a8cd',
+            '#a47d7c', '#058dc7', '#50b432', '#ed561b', '#24cbe5', '#64e572', '#ff9655', '#d6cb54',
+            '#6af9c4', '#b5ca92', '#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970',
+            '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#db843d', '#92a8cd', '#a47d7c', '#058dc7',
+            '#50b432', '#ed561b', '#24cbe5', '#64e572', '#ff9655', '#d6cb54', '#6af9c4', '#b5ca92',
+            '#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5'
+        ]
     };
 
 })(jQuery);
