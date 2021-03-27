@@ -1,6 +1,6 @@
 /**
  * jQuery plugin for tag cloud, showing bigger tags in the center
- * @version    2021.03.26
+ * @version    2021.03.27
  * @repository https://github.com/peterthoeny/jquery.tagcloud
  * @author     Peter Thoeny, https://twiki.org/ & https://github.com/peterthoeny
  * @copyright  2021 Peter Thoeny, https://github.com/peterthoeny
@@ -10,7 +10,7 @@
 
     'use strict';
 
-    let debug = true;
+    let debug = false;
 
     function debugLog(msg) {
         if(debug) {
@@ -99,8 +99,14 @@
             return 0;
         }).map(function(item, idx) {
             let html = item.link ? '<a href="' + item.link + '" target="_blank">' + item.tag + '</a>' : item.tag;
-            let attrs = [ 'class="jqTcTag"' ];
             let size = parseInt((a * item.weight + b) * 10, 10) / 10;
+            let attrs = [
+                'class="jqTcTag"',
+                'data-tag="' + entityEncode(item.tag) + '"',
+                'data-link="' + entityEncode(item.link || '') + '"',
+                'data-weight="' + item.weight + '"',
+                'data-size="' + size + '"'
+            ];
             let bgColor = item.bgColor || $.fn.tagCloud.defaults.backgroundColors[idx] || '';
             attrs.push('style="font-size: ' + size + 'px; background-color: ' + bgColor + ';"');
             if(item.tooltip) {
