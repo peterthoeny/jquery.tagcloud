@@ -18,10 +18,10 @@ There are two ways to define a tag cloud:
 <script src="/path/to/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
 
 <ul id="tagCloud1">
-    <li data-weight="60"><a href="#">HTML</a></li> <!-- with link -->
-    <li data-weight="65">CSS</li> <!-- without link -->
-    <li data-weight="85">JavaScript</li>
-    <!-- etc... -->
+  <li data-weight="60"><a href="#">HTML</a></li> <!-- with link -->
+  <li data-weight="65">CSS</li> <!-- without link -->
+  <li data-weight="85">JavaScript</li>
+  <!-- etc... -->
 </ul>
 
 <script>
@@ -44,10 +44,12 @@ Customize the tag cloud with a configuration object, see configuration.
 $(document).ready(function() {
   $('#tagCloud2').tagCloud({
     data: [
-      { tag: 'HTML',       link: '#', weight: 60 },
-      { tag: 'CSS',        link: '#', weight: 65,
-        tooltip: 'Sample "tooltip" message' },
-      { tag: 'JavaScript', link: '#', weight: 85 },
+      { tag: 'HTML',       weight: 60 },
+      { tag: 'CSS',        weight: 65,
+        link: 'https://en.wikipedia.org/wiki/CSS'
+        tooltip: 'Cascading Style Sheets' },
+      { tag: 'JavaScript', weight: 85 },
+      // etc...
     ]
   });
 });
