@@ -1,6 +1,6 @@
 /**
  * jQuery plugin for tag cloud, showing bigger tags in the center
- * @version    2021.03.27
+ * @version    1.0.0
  * @repository https://github.com/peterthoeny/jquery.tagcloud
  * @author     Peter Thoeny, https://twiki.org/ & https://github.com/peterthoeny
  * @copyright  2021 Peter Thoeny, https://github.com/peterthoeny
