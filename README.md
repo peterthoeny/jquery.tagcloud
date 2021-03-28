@@ -70,28 +70,29 @@ Pass a configuration object to `.tagCloud()`:
 ```
 {
   container: {  // all keys are optional, default as indicated
-    width:           500,         // tag cloud width
-    height:          'auto',      // tag cloud height
-    padding:         '10px 5px',  // padding
-    backgroundColor: '#f0f0f0'    // background color
-    fontFamily:      '"Helvetica Neue",Helvetica,Arial,sans-serif', // font family
+    width:            500,        // tag cloud width
+    height:           'auto',     // tag cloud height
+    padding:          '10px 5px', // padding
+    backgroundColor:  '#f0f0f0'   // background color
+    fontFamily:       '"Helvetica Neue",Helvetica,Arial,sans-serif', // font family
     // add additional styles as desired
   },
   tag: {        // all keys are optional, default as indicated
-    margin:          '3px 7px',   // tag margin
-    padding:         '3px 10px',  // tag padding
-    borderRadius:    '5px',       // border radius
-    color:           '#ffffff',   // text color
-    backgroundColor: '#ff9655',   // background color,  default is one out of many
-    minFontSize:     10,          // minimum font size in pixels
-    maxFontSize:     45,          // maximum font size in pixels
+    margin:           '3px 7px',  // tag margin
+    padding:          '3px 10px', // tag padding
+    borderRadius:     '5px',      // border radius
+    color:            '#ffffff',  // text color
+    backgroundColor:  '#ff9655',  // background color,  default is one out of many
+    minFontSize:      10,         // minimum font size in pixels
+    maxFontSize:      45,         // maximum font size in pixels
   },
   data: [       // required if div tag is used
     {
-      tag: 'GitHub',              // tag name, may include HTML, required
-      link: 'https://github.com', // link, optional
-      tooltip: 'Sample message',  // tooltip, optional
-      weight: 60                  // weight, required
+      tag:            'GitHub',   // tag name, may include HTML, required
+      link:           'https://github.com', // link, optional
+      tooltip:        'Message',  // tooltip, optional
+      weight:         60,         // weight, required
+      bgColor:        '#db843d'   // background color, optional
     },
     // etc...
   ]
