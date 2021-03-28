@@ -99,4 +99,4 @@ The tag with the smalles weight will use the font defined by `minFontSize`, the 
 
 ## Demo
 
-See [demo.html](demo.html)
+See [demo.html](https://peterthoeny.github.io/jquery.tagcloud/demo.html)
