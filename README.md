@@ -67,7 +67,7 @@ Pass a configuration object to `.tagCloud()`:
 ```
 {
   container: {  // all keys are optional, default as indicated
-    width:           630,         // tag cloud width
+    width:           500,         // tag cloud width
     height:          'auto',      // tag cloud height
     padding:         '10px 5px',  // padding
     backgroundColor: '#f0f0f0'    // background color
@@ -80,7 +80,7 @@ Pass a configuration object to `.tagCloud()`:
     borderRadius:    '5px',       // border radius
     color:           '#ffffff',   // text color
     backgroundColor: '#ff9655',   // background color,  default is one out of many
-    minFontSize:     8,           // minimum font size in pixels
+    minFontSize:     10,          // minimum font size in pixels
     maxFontSize:     45,          // maximum font size in pixels
   },
   data: [       // required if div tag is used
@@ -95,7 +95,7 @@ Pass a configuration object to `.tagCloud()`:
 }
 ```
 
-The tag with the smalles weight will use the font defined by `minFontSize`, the one with the biggest weight will use `maxFontSize`.
+The tag with the smallest weight will use the font defined by `minFontSize`, the one with the biggest weight will use `maxFontSize`.
 
 ## Demo
 
