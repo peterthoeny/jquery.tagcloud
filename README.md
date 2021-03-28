@@ -45,7 +45,8 @@ $(document).ready(function() {
   $('#tagCloud2').tagCloud({
     data: [
       { tag: 'HTML',       link: '#', weight: 60 },
-      { tag: 'CSS',        link: '#', weight: 65, tooltip: 'Sample "tooltip" message' },
+      { tag: 'CSS',        link: '#', weight: 65,
+        tooltip: 'Sample "tooltip" message' },
       { tag: 'JavaScript', link: '#', weight: 85 },
     ]
   });
