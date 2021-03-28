@@ -33,7 +33,7 @@ $(document).ready(function() {
 
 Add a `data-weight` attribute to the `li` tag or the `a` tag to indicate the weight. The weight determins the size of the font used in the tag cloud.
 
-Customize the tag cloud with  configuration object, see configuration.
+Customize the tag cloud with a configuration object, see configuration.
 
 ### 2. Use an configuration object and a `div` HTML tag
 
