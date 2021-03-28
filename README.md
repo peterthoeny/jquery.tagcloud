@@ -1,4 +1,4 @@
-# jquery.tagcloud v1.0.0
+# jquery.tagcloud v1.1.0
 
 Tag cloud plugin for jQuery, showing bigger tags in the center.
 
@@ -92,7 +92,8 @@ Pass a configuration object to `.tagCloud()`:
       link:           'https://github.com', // link, optional
       tooltip:        'Message',  // tooltip, optional
       weight:         60,         // weight, required
-      bgColor:        '#db843d'   // background color, optional
+      color:           '#ffffff'  // text color, optional
+      backgroundColor: '#db843d'  // background color, optional (short: bgColor)
     },
     // etc...
   ]
