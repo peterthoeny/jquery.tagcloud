@@ -14,7 +14,7 @@ There are two ways to define a tag cloud:
 ### 1. Use `ul` and `li` HTML tags
 
 ```
-<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-latest.js" type="text/javascript" charset="utf-8"></script>
 <script src="/path/to/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
 
 <ul id="tagCloud1">
