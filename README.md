@@ -1,6 +1,6 @@
 # jquery.tagcloud v1.0.0
 
-A tag cloud plugin for jQuery, showing bigger tags in the center.
+Tag cloud plugin for jQuery, showing bigger tags in the center.
 
 ![Sample screenshot](tag-cloud-screenshot.png)
 
