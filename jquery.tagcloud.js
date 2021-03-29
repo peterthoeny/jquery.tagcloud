@@ -214,8 +214,8 @@
         tag: {
             minFontSize:  10,     // min font size in pixels
             maxFontSize:  40,     // max font size in pixels
-            color:        'auto', // 
-            textShadow:   false   // text shadow, dark or light, based on background color
+            color:        'auto', // auto text color, black for light background, white for dark background
+            textShadow:   false   // text shadow, enable for better visibility
         },
         backgroundColors: [
             '#db843d', '#92a8cd', '#a47d7c', '#058dc7', '#50b432', '#ed561b', '#24cbe5', '#64e572',

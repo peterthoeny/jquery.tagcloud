@@ -85,7 +85,7 @@ Pass a configuration object to `.tagCloud()`:
     backgroundColor:  '#ff9655',  // background color,  default is one out of many
     minFontSize:      10,         // minimum font size in pixels
     maxFontSize:      45,         // maximum font size in pixels
-    textShadow:       false       // enable text shadow for better visibility
+    textShadow:       false       // text shadow, enable for better visibility
   },
   data: [       // required if div tag is used
     {
