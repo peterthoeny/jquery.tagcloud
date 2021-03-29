@@ -81,10 +81,11 @@ Pass a configuration object to `.tagCloud()`:
     margin:           '3px 7px',  // tag margin
     padding:          '3px 10px', // tag padding
     borderRadius:     '5px',      // border radius
-    color:            '#ffffff',  // text color
+    color:            'auto',     // auto text color, black for light background, white for dark background
     backgroundColor:  '#ff9655',  // background color,  default is one out of many
     minFontSize:      10,         // minimum font size in pixels
     maxFontSize:      45,         // maximum font size in pixels
+    textShadow:       false       // enable text shadow for better visibility
   },
   data: [       // required if div tag is used
     {
