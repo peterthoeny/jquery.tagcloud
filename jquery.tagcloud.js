@@ -121,8 +121,12 @@
             bgColor
             .replace(/^#(.)(.)(.)$/, '#$1$1$2$2$3$3')
             .replace(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})?$/i, function(m, c1, c2, c3) {
-                let luminance = (Number('0x' + c1, 10) + Number('0x' + c2, 10) + Number('0x' + c3, 10)) / 3;
-                if(luminance > 127) {
+                let brightness = Math.round((
+                    (Number('0x' + c1) * 299) +
+                    (Number('0x' + c2) * 587) +
+                    (Number('0x' + c3) * 114)
+                ) / 1000);
+                if(brightness > 125) {
                     if(color === 'auto') {
                         style += ' color: black;';
                     }
