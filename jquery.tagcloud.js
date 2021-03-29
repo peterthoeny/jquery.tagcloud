@@ -1,6 +1,7 @@
 /**
  * Tag cloud plugin for jQuery, showing bigger tags in the center
  * @version    1.1.0
+ * @release    2021-03-28
  * @repository https://github.com/peterthoeny/jquery.tagcloud
  * @author     Peter Thoeny, https://twiki.org/ & https://github.com/peterthoeny
  * @copyright  2021 Peter Thoeny, https://github.com/peterthoeny
@@ -107,10 +108,37 @@
                 'data-weight="' + item.weight + '"',
                 'data-size="' + size + '"'
             ];
-            let bgColor = item.bgColor || item.backgroundColor ||
-                $.fn.tagCloud.defaults.backgroundColors[idx] || '';
-            let style = 'style="font-size: ' + size + 'px; background-color: ' + bgColor;
-            style += item.color ? '; color: ' + item.color + ';"' : ';"';
+            let style = 'style="font-size: ' + size + 'px;';
+            let bgColor = item.bgColor || item.backgroundColor || options.tag.backgroundColor ||
+                $.fn.tagCloud.defaults.backgroundColors[idx] || $.fn.tagCloud.defaults.defaultTagBackgroundColor;
+            if(bgColor) {
+                style += ' background-color: ' + bgColor + ';';
+            }
+            let color = item.color || options.tag.color || $.fn.tagCloud.defaults.defaultTagColor;
+            if(color != 'auto') {
+                style += ' color: ' + color + ';';
+            }
+            bgColor
+            .replace(/^#(.)(.)(.)$/, '#$1$1$2$2$3$3')
+            .replace(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})?$/i, function(m, c1, c2, c3) {
+                let luminance = (Number('0x' + c1, 10) + Number('0x' + c2, 10) + Number('0x' + c3, 10)) / 3;
+                if(luminance > 127) {
+                    if(color === 'auto') {
+                        style += ' color: black;';
+                    }
+                    if(options.tag.textShadow) {
+                        style += ' text-shadow: 0px 0px 2px #dddddd;';
+                    }
+                } else {
+                    if(color === 'auto') {
+                        style += ' color: white;';
+                    }
+                    if(options.tag.textShadow) {
+                        style += ' text-shadow: 0px 0px 2px #222222;';
+                    }
+                }
+            });
+            style += '"';
             attrs.push(style);
             if(item.tooltip) {
                 attrs.push('title="' + entityEncode(item.tooltip) + '"');
@@ -167,7 +195,7 @@
         let html = '<table class="jqTcTable">' + rows.join('') + '</table>';
         let tagStyle = {};
         Object.keys(options.tag).forEach(key => {
-            if(!/^(minFontSize|maxFontSize)$/.test(key)) {
+            if(!/^(minFontSize|maxFontSize|color|textShadow|backgroundColor)$/.test(key)) {
                 tagStyle[key] = options.tag[key];
             }
         });
@@ -176,27 +204,31 @@
 
     $.fn.tagCloud.defaults = {
         container: {
-            width:  500,
-            height: 'auto',
+            width:        500,
+            height:       'auto',
             backgroundColor: '#f0f0f0',
-            color:  '#666666',
-            padding: '10px 5px',
-            fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif'
+            color:        '#666666',
+            padding:      '10px 5px',
+            fontFamily:   '"Helvetica Neue",Helvetica,Arial,sans-serif'
         },
         tag: {
-            minFontSize: 10,    // min font size in pixels
-            maxFontSize: 40,    // max font size in pixels
+            minFontSize:  10,     // min font size in pixels
+            maxFontSize:  40,     // max font size in pixels
+            color:        'auto', // 
+            textShadow:   false   // text shadow, dark or light, based on background color
         },
         backgroundColors: [
             '#db843d', '#92a8cd', '#a47d7c', '#058dc7', '#50b432', '#ed561b', '#24cbe5', '#64e572',
-            '#ff9655', '#d6cb54', '#6af9c4', '#b5ca92', '#2f7ed8', '#0d233a', '#8bbc21', '#910000',
+            '#ff9655', '#d6cb54', '#6af9c4', '#b5ca92', '#2f7ed8', '#5c40de', '#8bbc21', '#910000',
             '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#db843d', '#92a8cd',
             '#a47d7c', '#058dc7', '#50b432', '#ed561b', '#24cbe5', '#64e572', '#ff9655', '#d6cb54',
-            '#6af9c4', '#b5ca92', '#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970',
+            '#6af9c4', '#b5ca92', '#2f7ed8', '#5c40de', '#8bbc21', '#910000', '#1aadce', '#492970',
             '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#db843d', '#92a8cd', '#a47d7c', '#058dc7',
             '#50b432', '#ed561b', '#24cbe5', '#64e572', '#ff9655', '#d6cb54', '#6af9c4', '#b5ca92',
-            '#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5'
-        ]
+            '#2f7ed8', '#5c40de', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5'
+        ],
+        defaultTagColor:            'auto',   // black or white, based on background color
+        defaultTagBackgroundColor:  '#ff9655' // default background color
     };
 
 })(jQuery);
