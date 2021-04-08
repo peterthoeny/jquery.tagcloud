@@ -1,7 +1,7 @@
 /**
  * Tag cloud plugin for jQuery, showing bigger tags in the center
- * @version    1.1.0
- * @release    2021-03-28
+ * @version    1.2.0
+ * @release    2021-04-07
  * @repository https://github.com/peterthoeny/jquery.tagcloud
  * @author     Peter Thoeny, https://twiki.org/ & https://github.com/peterthoeny
  * @copyright  2021 Peter Thoeny, https://github.com/peterthoeny
@@ -31,6 +31,7 @@
 
     $.fn.tagCloud = function(options) {
         let self = $(this);
+        let addLink = options && options.tag && options.tag.format ? false : true;
         options = $.extend({}, $.fn.tagCloud.defaults, options);
         if(options.debug != undefined) {
            debug = options.debug;
@@ -56,9 +57,9 @@
                     if(href) {
                         options.data[idx].link = href;
                     }
-                    options.data[idx].tag = tag;
+                    options.data[idx].name = tag;
                 } else {
-                    options.data.push({ tag: tag, link: href, weight: Number(weight) })
+                    options.data.push({ name: tag, link: href, weight: Number(weight) })
                 }
             });
             self.hide();
@@ -78,6 +79,8 @@
         let maxWeight = -1000000000000;
         let minFontSize = options.tag.minFontSize || $.fn.tagCloud.defaults.tag.minFontSize;
         let maxFontSize = options.tag.maxFontSize || $.fn.tagCloud.defaults.tag.maxFontSize;
+        let format = options.tag.format || $.fn.tagCloud.defaults.tag.format;
+        let sum = 0;
         debugLog('minFontSize: '+minFontSize+', maxFontSize: '+maxFontSize);
         options.data.forEach(function(item) {
             if(item.weight < minWeight) {
@@ -86,7 +89,7 @@
             if(item.weight > maxWeight) {
                 maxWeight = item.weight;
             }
-            return item;
+            sum += item.weight;
         });
         let a = (maxFontSize - minFontSize) / (maxWeight - minWeight);
         let b = minFontSize - (minWeight * a);
@@ -99,11 +102,33 @@
             }
             return 0;
         }).map(function(item, idx) {
-            let html = item.link ? '<a href="' + item.link + '" target="_blank">' + item.tag + '</a>' : item.tag;
+            let html = format
+                .replace(/\{tag\.name\}/g, item.name)
+                .replace(/\{tag\.link\}/g, item.link)
+                .replace(/\{tag\.weight(?:\.(\d))?\}/g, function(m, c1) {
+                    let num = item.weight;
+                    if(c1) {
+                        let factor = 10 ** parseInt(c1);
+                        num = Math.round(num * factor) / factor;
+                    }
+                    return num.toString();
+                })
+                .replace(/\{tag\.percent(?:\.(\d))?\}/g, function(m, c1) {
+                    let num = 100 * item.weight / sum;
+                    let factor = 1;
+                    if(c1) {
+                        factor = 10 ** parseInt(c1);
+                    }
+                    num = Math.round(num * factor) / factor;
+                    return num.toString() + '%';
+                });
+            if(addLink && item.link) {
+                html = '<a href="' + item.link + '" target="_blank">' + html + '</a>';
+            }
             let size = parseInt((a * item.weight + b) * 10, 10) / 10;
             let attrs = [
                 'class="jqTcTag"',
-                'data-tag="' + entityEncode(item.tag) + '"',
+                'data-name="' + entityEncode(item.name) + '"',
                 'data-link="' + entityEncode(item.link || '') + '"',
                 'data-weight="' + item.weight + '"',
                 'data-size="' + size + '"'
@@ -199,7 +224,7 @@
         let html = '<table class="jqTcTable">' + rows.join('') + '</table>';
         let tagStyle = {};
         Object.keys(options.tag).forEach(key => {
-            if(!/^(minFontSize|maxFontSize|color|textShadow|backgroundColor)$/.test(key)) {
+            if(!/^(minFontSize|maxFontSize|format|color|textShadow|backgroundColor)$/.test(key)) {
                 tagStyle[key] = options.tag[key];
             }
         });
@@ -218,6 +243,7 @@
         tag: {
             minFontSize:  10,     // min font size in pixels
             maxFontSize:  40,     // max font size in pixels
+            format:       '{tag.name}', // also '{tag.link}', '{tag.weight}', '{tag.percent}'
             color:        'auto', // auto text color, black for light background, white for dark background
             textShadow:   false   // text shadow, enable for better visibility
         },

@@ -20,50 +20,51 @@
                 backgroundColor: '#fafaf8'
             },
             tag: {
-                maxFontSize: 45,    // max font size in pixels
+                format: '<a href="{tag.link}">{tag.name}</a>: {tag.weight}', // default: '{tab.name}'
+                maxFontSize: 41,    // max font size in pixels
                 minFontSize: 8,     // min font size in pixels
                 textShadow:  true   // text shadow, enabled for better visibility
             },
             data: [
-                { tag: 'HTML',          link: '#', weight: 60 },
-                { tag: 'HTML5',         link: '#', weight: 90, tooltip: 'Sample "tooltip" message' },
-                { tag: 'CSS',           link: '#', weight: 65 },
-                { tag: 'CSS3',          link: '#', weight: 35 },
-                { tag: 'JavaScript',    link: '#', weight: 85 },
-                { tag: 'jQuery',        link: '#', weight: 100 },
-                { tag: 'React.js',      link: '#', weight: 78 },
-                { tag: 'Angular',       link: '#', weight: 62 },
-                { tag: 'Express',       link: '#', weight: 82 },
-                { tag: 'Sharepoint',    link: '#', weight: 10 },
-                { tag: 'ASP.NET',       link: '#', weight: 15 },
-                { tag: 'Vue.js',        link: '#', weight: 43 },
-                { tag: 'Spring',        link: '#', weight: 36 },
-                { tag: 'Django',        link: '#', weight: 32 },
-                { tag: 'Flask',         link: '#', weight: 18 },
-                { tag: 'Ruby onRails',  link: '#', weight: 14 },
-                { tag: 'MongoDB',       link: '#', weight: 95 },
-                { tag: 'Elasticsearch', link: '#', weight: 40 },
-                { tag: 'MySql',         link: '#', weight: 58 },
-                { tag: 'PostgreSQL',    link: '#', weight: 50 },
-                { tag: 'Microsoft SQL Server', link: '#', weight: 48 },
-                { tag: 'SQLite',        link: '#', weight: 45 },
-                { tag: 'Redis',         link: '#', weight: 41 },
-                { tag: 'Oracle 9i',     link: '#', weight: 39 },
-                { tag: 'Node.js',       link: '#', weight: 70 },
-                { tag: '.NET',          link: '#', weight: 38 },
-                { tag: 'WCF',           link: '#', weight: 16 },
-                { tag: 'TensorFlow',    link: '#', weight: 24 },
-                { tag: 'Ansible',       link: '#', weight: 16 },
-                { tag: 'Flutter',       link: '#', weight: 15 },
-                { tag: 'TypeScript',    link: '#', weight: 37 },
-                { tag: 'Java',          link: '#', weight: 42 },
-                { tag: 'Python',        link: '#', weight: 58 },
-                { tag: 'C',             link: '#', weight: 28 },
-                { tag: 'C++',           link: '#', weight: 36 },
-                { tag: 'C#',            link: '#', weight: 25 },
-                { tag: 'Go',            link: '#', weight: 18 },
-                { tag: 'PHP',           link: '#', weight: 12 },
-                { tag: 'VBA',           link: '#', weight: 10 }
+                { name: 'HTML',          link: '#', weight: 60 },
+                { name: 'HTML5',         link: '#', weight: 90, tooltip: 'Sample "tooltip" message' },
+                { name: 'CSS',           link: '#', weight: 65 },
+                { name: 'CSS3',          link: '#', weight: 35 },
+                { name: 'JavaScript',    link: '#', weight: 85 },
+                { name: 'jQuery',        link: '#', weight: 100 },
+                { name: 'React.js',      link: '#', weight: 78 },
+                { name: 'Angular',       link: '#', weight: 62 },
+                { name: 'Express',       link: '#', weight: 82 },
+                { name: 'Sharepoint',    link: '#', weight: 10 },
+                { name: 'ASP.NET',       link: '#', weight: 15 },
+                { name: 'Vue.js',        link: '#', weight: 43 },
+                { name: 'Spring',        link: '#', weight: 36 },
+                { name: 'Django',        link: '#', weight: 32 },
+                { name: 'Flask',         link: '#', weight: 18 },
+                { name: 'Ruby onRails',  link: '#', weight: 14 },
+                { name: 'MongoDB',       link: '#', weight: 95 },
+                { name: 'Elasticsearch', link: '#', weight: 40 },
+                { name: 'MySql',         link: '#', weight: 58 },
+                { name: 'PostgreSQL',    link: '#', weight: 50 },
+                { name: 'Microsoft SQL Server', link: '#', weight: 48 },
+                { name: 'SQLite',        link: '#', weight: 45 },
+                { name: 'Redis',         link: '#', weight: 41 },
+                { name: 'Oracle 9i',     link: '#', weight: 39 },
+                { name: 'Node.js',       link: '#', weight: 70 },
+                { name: '.NET',          link: '#', weight: 38 },
+                { name: 'WCF',           link: '#', weight: 16 },
+                { name: 'TensorFlow',    link: '#', weight: 24 },
+                { name: 'Ansible',       link: '#', weight: 16 },
+                { name: 'Flutter',       link: '#', weight: 15 },
+                { name: 'TypeScript',    link: '#', weight: 37 },
+                { name: 'Java',          link: '#', weight: 42 },
+                { name: 'Python',        link: '#', weight: 58 },
+                { name: 'C',             link: '#', weight: 28 },
+                { name: 'C++',           link: '#', weight: 36 },
+                { name: 'C#',            link: '#', weight: 25 },
+                { name: 'Go',            link: '#', weight: 18 },
+                { name: 'PHP',           link: '#', weight: 12 },
+                { name: 'VBA',           link: '#', weight: 10 }
             ]
         }
         $('#demoCloud2').tagCloud(options);
@@ -119,7 +120,7 @@
                 <li data-weight="18"><a href="#">Flask</a></li>
             </ul>
         </td><td style="vertical-align: top;">
-            <textarea style="width: 33em; height: 16.4em;" readonly="readonly">
+            <textarea style="width: 34em; height: 16.4em;" readonly="readonly">
 &lt;ul id="demoCloud1">
   &lt;li data-weight="60">&lt;a href="#">HTML&lt;/a>&lt;/li>
   &lt;li data-weight="20>&lt;a" href="#">HTML5&lt;/a>&lt;/li>
@@ -135,7 +136,7 @@
   &lt;!-- etc... -->
 &lt;/ul></textarea>
         </td><td style="vertical-align: top;">
-            <textarea style="width: 23em; height: 16.4em;" readonly="readonly">
+            <textarea style="width: 22em; height: 16.4em;" readonly="readonly">
 $(document).ready(function() {
   $('#demoCloud1').tagCloud({
     tag: {
@@ -157,11 +158,11 @@ $(document).ready(function() {
         <tr><td style="vertical-align: top;">
             <div id="demoCloud2"></div>
         </td><td style="vertical-align: top;">
-            <textarea style="width: 13em; height: 29em;" readonly="readonly">
+            <textarea style="width: 13em; height: 32em;" readonly="readonly">
 &lt;div id="demoCloud2">
 &lt;/div></textarea>
         </td><td style="vertical-align: top;">
-            <textarea style="width: 34em; height: 29em;" readonly="readonly">
+            <textarea style="width: 34em; height: 32em;" readonly="readonly">
 $(document).ready(function() {
   let options = {
     container: {
@@ -170,18 +171,19 @@ $(document).ready(function() {
       //fontFamily: '"Times New Roman", Times, serif',
     },
     tag: {
-      maxFontSize: 45,  // max font size in pixels
+      format:      '<a href="{tag.link}">{tag.name}</a>: {tag.weight}',
+      maxFontSize: 41,  // max font size in pixels
       minFontSize: 8,   // min font size in pixels
       textShadow:  true // enable text shadow
     },
     data: [
-      { tag: 'HTML',          link: '#', weight: 60 },
-      { tag: 'HTML5',         link: '#', weight: 90,
+      { name: 'HTML',       link: '#', weight: 60 },
+      { name: 'HTML5',      link: '#', weight: 90,
         tooltip: 'Sample "tooltip" message' },
-      { tag: 'CSS',           link: '#', weight: 65 },
-      { tag: 'CSS3',          link: '#', weight: 35 },
-      { tag: 'JavaScript',    link: '#', weight: 85 },
-      { tag: 'jQuery',        link: '#', weight: 100 },
+      { name: 'CSS',        link: '#', weight: 65 },
+      { name: 'CSS3',       link: '#', weight: 35 },
+      { name: 'JavaScript', link: '#', weight: 85 },
+      { name: 'jQuery',     link: '#', weight: 100 },
       // etc...
     ]
   }

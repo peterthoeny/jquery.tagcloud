@@ -1,4 +1,4 @@
-# jquery.tagcloud v1.1.0
+# jquery.tagcloud v1.2.0
 
 Tag cloud plugin for jQuery, showing bigger tags in the center.
 
@@ -81,10 +81,19 @@ Pass a configuration object to `.tagCloud()`:
     margin:           '3px 7px',  // tag margin
     padding:          '3px 10px', // tag padding
     borderRadius:     '5px',      // border radius
-    color:            'auto',     // auto text color, black for light background, white for dark background
+    color:            'auto',     // automatic text color, black for light background,
+                                  //   and white for dark background
     backgroundColor:  '#ff9655',  // background color,  default is one out of many
     minFontSize:      10,         // minimum font size in pixels
     maxFontSize:      45,         // maximum font size in pixels
+    format:         '{tag.name}', // tag format, use HTML with tokens:
+                                  //   {tag.name}: tag name
+                                  //   {tag.link}: tag link
+                                  //   {tag.weight}: weight
+                                  //   {tag.weight.0}: rounded weight
+                                  //   {tag.weight.2}: weight rounded to 2 decimal places
+                                  //   {tag.percent}: percent weight to sum of all weights
+                                  //   {tag.percent.1}: percentage rounded to 1 decimal
     textShadow:       false       // text shadow, enable for better visibility
   },
   data: [       // required if div tag is used
