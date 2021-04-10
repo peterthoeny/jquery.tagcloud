@@ -35,7 +35,7 @@ Add a `data-weight` attribute to the `li` tag or the `a` tag to indicate the wei
 
 Customize the tag cloud with a configuration object, see configuration.
 
-### 2. Use an configuration object and a `div` HTML tag
+### 2. Use a configuration object and a `div` HTML tag
 
 ```
 <div id="tagCloud2"></div>
@@ -98,12 +98,12 @@ Pass a configuration object to `.tagCloud()`:
   },
   data: [       // required if div tag is used
     {
-      tag:            'GitHub',   // tag name, may include HTML, required
-      link:           'https://github.com', // link, optional
-      tooltip:        'Message',  // tooltip, optional
-      weight:         60,         // weight, required
+      tag:             'GitHub',  // tag name, may include HTML, required
+      link:            'https://github.com/', // link, optional
+      tooltip:         'Message', // tooltip, optional
+      weight:          60,        // tag weight, required
       color:           '#ffffff'  // text color, optional
-      backgroundColor: '#db843d'  // background color, optional (short: bgColor)
+      backgroundColor: '#db843d'  // background color, optional (short key: bgColor)
     },
     // etc...
   ]
